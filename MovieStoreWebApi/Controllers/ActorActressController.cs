@@ -26,7 +26,27 @@ namespace MovieStoreWebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost] // Aktör Ekle
+        [HttpGet] // Tüm aktörleri getir
+        public IActionResult GetActorActress()
+        {
+            GetActorActressQuery query = new GetActorActressQuery(_context, _mapper);
+            var result = query.Handle();
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")] // ID'ye göre aktör getir
+        public IActionResult GetById(int id)
+        {
+            ActorActressDetailViewModel result;
+            GetActorActressDetailQuery query = new GetActorActressDetailQuery(_context, _mapper);
+            query.ActorActressId = id;
+            GetActorActressDetailQueryValidator validator = new GetActorActressDetailQueryValidator();
+            validator.ValidateAndThrow(query);
+            result = query.Handle();
+            return Ok(result);
+        }
+
+        [HttpPost] // Aktör ekle
         public IActionResult AddActorActress([FromBody] CreateActorActressModel newActorActress)
         {
             CreateActorActressCommand command = new CreateActorActressCommand(_context, _mapper);
@@ -37,27 +57,7 @@ namespace MovieStoreWebApi.Controllers
             return Ok();
         }
 
-        [HttpGet] // Tüm Aktörleri Listele
-        public IActionResult GetActorActress()
-        {
-            GetActorActressQuery query = new GetActorActressQuery(_context, _mapper);
-            var result = query.Handle();
-            return Ok(result);
-        }
-
-        [HttpGet("{id}")] // ID'ye Göre Aktör Getir
-        public IActionResult GetById(int id)
-        {
-            ActorActressDetailViewModel result;
-            GetActorActressDetailQuery query = new GetActorActressDetailQuery(_context, _mapper);
-            GetActorActressDetailQueryValidator validator = new GetActorActressDetailQueryValidator();
-            validator.ValidateAndThrow(query);
-            query.ActorActressId = id;
-            result = query.Handle();
-            return Ok(result);
-        }
-
-        [HttpPut("{id}")] // Aktör Güncelle
+        [HttpPut("{id}")] // Aktör güncelle
         public IActionResult UpdateActorActress(int id, [FromBody] UpdateActorActressModel updatedActorActress)
         {
             UpdateActorActressCommand command = new UpdateActorActressCommand(_mapper, _context);
@@ -69,7 +69,7 @@ namespace MovieStoreWebApi.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")] // Aktör Silme
+        [HttpDelete("{id}")] // Aktör silme
         public IActionResult DeleteActorActress(int id)
         {
             DeleteActorActressCommand command = new DeleteActorActressCommand(_context);
