@@ -71,7 +71,7 @@ namespace MovieStoreWebApi.Controllers
         }
 
         [HttpPut("{id}")] // Yönetmen güncelle
-        public IActionResult UpdateDirector([FromBody] UpdateDirectorModel updatedDirector,int id)
+        public IActionResult UpdateDirector([FromBody] UpdateDirectorViewModel updatedDirector,int id)
         {
             
             UpdateDirectorCommand command = new UpdateDirectorCommand(_context, _mapper);
