@@ -49,7 +49,7 @@ namespace MovieStoreWebApi.Controllers
         }
 
         [HttpPost] // Yönetmen ekleme
-        public IActionResult AddDirector([FromBody] CreateDirectorModel newDirector)
+        public IActionResult AddDirector([FromBody] CreateDirectorViewModel newDirector)
         {
             CreateDirectorCommand command = new CreateDirectorCommand(_context, _mapper);
             command.Model = newDirector;

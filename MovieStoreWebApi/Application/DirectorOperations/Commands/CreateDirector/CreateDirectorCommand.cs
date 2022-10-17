@@ -6,7 +6,7 @@ namespace MovieStoreWebApi.Application.DirectorOperations.Commands.CreateDirecto
 {
     public class CreateDirectorCommand
     {
-        public CreateDirectorModel Model { get; set; }
+        public CreateDirectorViewModel Model { get; set; }
         private readonly IMovieStoreDbContext _context;
         private readonly IMapper _mapper;
 
@@ -30,7 +30,7 @@ namespace MovieStoreWebApi.Application.DirectorOperations.Commands.CreateDirecto
             _context.SaveChanges();
         }
 
-        public class CreateDirectorModel
+        public class CreateDirectorViewModel
         {
             public string Name { get; set; }
             public string Surname { get; set; }

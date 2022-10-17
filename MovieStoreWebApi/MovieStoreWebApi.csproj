@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Application\MovieOperations\" />
-    <Folder Include="Application\GenreOperations\" />
   </ItemGroup>
 
 </Project>

@@ -10,6 +10,10 @@ using static MovieStoreWebApi.Application.DirectorOperations.Queries.GetDirector
 using static MovieStoreWebApi.Application.DirectorOperations.Commands.CreateDirector.CreateDirectorCommand;
 using MovieStoreWebApi.Application.DirectorOperations.Commands.UpdateDirector;
 using static MovieStoreWebApi.Application.DirectorOperations.Commands.UpdateDirector.UpdateDirectorCommand;
+using static MovieStoreWebApi.Application.GenreOperations.Commands.CreateGenre.CreateGenreCommand;
+using static MovieStoreWebApi.Application.GenreOperations.Queries.GetGenres.GetGenresQuery;
+using static MovieStoreWebApi.Application.GenreOperations.Queries.GetGenreDetail.GetGenreDetailQuery;
+using static MovieStoreWebApi.Application.GenreOperations.Commands.UpdateGenre.UpdateGenreCommand;
 
 namespace MovieStoreWebApi.Common
 {
@@ -21,12 +25,16 @@ namespace MovieStoreWebApi.Common
             CreateMap<ActorActress , ActorActressViewModel>();
             CreateMap<ActorActress, ActorActressDetailViewModel>();
             CreateMap<UpdateActorActressModel, ActorActress>();
+
+            CreateMap<CreateDirectorViewModel, Director>();
             CreateMap<Director, DirectorViewModel>();
             CreateMap<Director, DirectorDetailViewModel>();
-            CreateMap<CreateDirectorModel, Director>();
-            CreateMap<UpdateDirectorModel, Director>();
+            CreateMap<UpdateDirectorViewModel, Director>();
 
-
+            CreateMap<CreateGenreViewModel, Genre>();
+            CreateMap<Genre, GenreViewModel>();
+            CreateMap<Genre, GenreDetailViewModel>();
+            CreateMap<UpdateGenreViewModel, Genre>();
         }
     }
 }

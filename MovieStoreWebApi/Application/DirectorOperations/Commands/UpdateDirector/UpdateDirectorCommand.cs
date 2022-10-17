@@ -5,7 +5,7 @@ namespace MovieStoreWebApi.Application.DirectorOperations.Commands.UpdateDirecto
 {
     public class UpdateDirectorCommand
     {
-        public UpdateDirectorModel Model { get; set; }
+        public UpdateDirectorViewModel Model { get; set; }
         public int DirectorId;
         private readonly IMovieStoreDbContext _context;
         private readonly IMapper _mapper;
@@ -28,7 +28,7 @@ namespace MovieStoreWebApi.Application.DirectorOperations.Commands.UpdateDirecto
             _context.SaveChanges();
         }
 
-        public class UpdateDirectorModel
+        public class UpdateDirectorViewModel
         {
             public string Name { get; set; }
             public string Surname { get; set; }
