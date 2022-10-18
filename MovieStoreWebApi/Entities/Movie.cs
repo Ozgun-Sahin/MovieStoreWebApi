@@ -12,8 +12,7 @@ namespace MovieStoreWebApi.Entities
         public Director Director { get; set; }
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
-        //public int ActorActressId { get; set; }
-        //public ActorActress ActorActress { get; set; }
-        public double  Price { get; set; }
+        public double Price { get; set; }
+
     }
 }

@@ -106,6 +106,25 @@ namespace MovieStoreWebApi.DBOperations
                           Price = 34.90
                       });
 
+                context.AddRange(
+                    new ActorActressMovieJoint
+                    {
+                        ActorActressId = 1,
+                        MovieId = 1
+                    },
+
+                    new ActorActressMovieJoint
+                    {
+                        ActorActressId = 2,
+                        MovieId = 1
+                    },
+
+                    new ActorActressMovieJoint
+                    {
+                        ActorActressId = 3,
+                        MovieId = 1
+                    });
+
                 context.SaveChanges();
 
             }
