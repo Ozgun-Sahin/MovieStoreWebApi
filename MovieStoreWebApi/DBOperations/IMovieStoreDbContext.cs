@@ -10,6 +10,7 @@ namespace MovieStoreWebApi.DBOperations
         public DbSet<Director> Directors { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<ActorActressMovieJoint> actorActressMovieJoints { get; set; }
 
         int SaveChanges();
     }

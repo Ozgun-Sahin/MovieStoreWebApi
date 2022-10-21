@@ -18,16 +18,24 @@ using static MovieStoreWebApi.Application.MovieOperations.Queries.GetMovies.GetM
 using static MovieStoreWebApi.Application.MovieOperations.Queries.GetMovieDetail.GetMovieDetailQuery;
 using static MovieStoreWebApi.Application.MovieOperations.Commands.CreateMovie.CreateMovieCommand;
 using static MovieStoreWebApi.Application.MovieOperations.Commands.UpdateMovie.UpdateMovieCommand;
+using System.Security.Cryptography.X509Certificates;
+using MovieStoreWebApi.DBOperations;
+using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace MovieStoreWebApi.Common
 {
+
     public class MappingProfile : Profile
     {
+        public readonly IMovieStoreDbContext _dbContext;
+
         public MappingProfile()
         {
             //ActorActress Mapping
             CreateMap<CreateActorActressModel, ActorActress>();
-            CreateMap<ActorActress , ActorActressViewModel>();
+            CreateMap<ActorActress, ActorActressViewModel>();
             CreateMap<ActorActress, ActorActressDetailViewModel>();
             CreateMap<UpdateActorActressModel, ActorActress>();
 
@@ -44,14 +52,16 @@ namespace MovieStoreWebApi.Common
             CreateMap<UpdateGenreViewModel, Genre>();
 
             //Movie Mapping
-            CreateMap<Movie, MovieViewModel>().ForMember(dest => dest.Director, opt => opt.MapFrom(src => src.Director.Name + " " +src.Director.Surname));
-            CreateMap<Movie, MovieDetailViewModel>().ForMember(dest => dest.Director, opt => opt.MapFrom(src => src.Director.Name + " " + src.Director.Surname))
-                                                    .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.GenreTitle));
-                                                    
-                                                    
+            CreateMap<Movie, MovieViewModel>().ForMember(dest => dest.Director, opt => opt.MapFrom(src => src.Director.Name + " " + src.Director.Surname));
+            CreateMap<Movie, MovieDetailViewModel>()
+                .ForMember(dest => dest.Director, opt => opt.MapFrom(src => src.Director.Name + " " + src.Director.Surname))
+                .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.GenreTitle))
+                .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.ActorActressMovieJoint.Select(x => x.actorActress.Name + " " + x.actorActress.Surname)));
+
+
+
             CreateMap<CreateMovieViewModel, Movie>();
             CreateMap<UpdateMovieViewModel, Movie>();
-                
         }
     }
 }

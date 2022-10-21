@@ -14,5 +14,7 @@ namespace MovieStoreWebApi.Entities
         public Genre Genre { get; set; }
         public double Price { get; set; }
 
+        public virtual ICollection<ActorActressMovieJoint> ActorActressMovieJoint { get; set; }
+
     }
 }
