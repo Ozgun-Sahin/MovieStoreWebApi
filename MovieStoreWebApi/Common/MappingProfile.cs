@@ -23,6 +23,7 @@ using MovieStoreWebApi.DBOperations;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using static MovieStoreWebApi.Application.CustomerOperations.Commands.CreateCustomer.CreateCustomerCommand;
 
 namespace MovieStoreWebApi.Common
 {
@@ -58,10 +59,11 @@ namespace MovieStoreWebApi.Common
                 .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.GenreTitle))
                 .ForMember(dest => dest.Actors, opt => opt.MapFrom(src => src.ActorActressMovieJoint.Select(x => x.actorActress.Name + " " + x.actorActress.Surname)));
 
-
-
             CreateMap<CreateMovieViewModel, Movie>();
             CreateMap<UpdateMovieViewModel, Movie>();
+
+            //Customer Mapping
+            CreateMap<CreateCustomerModel, Customer>();
         }
     }
 }

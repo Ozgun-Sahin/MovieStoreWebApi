@@ -13,7 +13,6 @@ namespace MovieStoreWebApi.Entities
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
         public double Price { get; set; }
-
         public virtual ICollection<ActorActressMovieJoint> ActorActressMovieJoint { get; set; }
 
     }

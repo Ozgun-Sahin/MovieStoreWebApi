@@ -4,14 +4,33 @@ using MovieStoreWebApi.DBOperations;
 using System.Reflection;
 using MovieStoreWebApi.MiddleWares;
 using MovieStoreWebApi.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+
+IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-
 // Add services to the container.
 
-
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = configuration["Token:Issuer"],
+        ValidAudience = configuration["Token:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:SecurityKey"])),
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -43,13 +62,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseAuthentication();
 
-app.UseCustomExceptionMiddle();
+app.UseHttpsRedirection();
 
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseCustomExceptionMiddle();
 
 app.UseEndpoints(endpoints =>
 {

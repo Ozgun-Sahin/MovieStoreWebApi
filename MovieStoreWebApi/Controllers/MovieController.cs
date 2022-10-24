@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.InMemory.Storage.Internal;
 using MovieStoreWebApi.Application.DirectorOperations.Commands.CreateDirector;
@@ -17,6 +18,7 @@ using static MovieStoreWebApi.Application.MovieOperations.Queries.GetMovieDetail
 
 namespace MovieStoreWebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class MovieController : ControllerBase

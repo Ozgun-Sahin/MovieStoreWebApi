@@ -33,3 +33,10 @@ C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bi
 C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ozgun\Desktop\NetCoreWebApiProject\MovieStoreWebApi\MovieStoreWebApi\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
